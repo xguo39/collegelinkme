@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		Scraper scraper = new ProfessorProfileScraper();
 		ScrapingResult scrapingResult = new ProfessorProfileResult();
-		scrapingStoreService.dropScrapingTable("Gatech_CEE_Faculty_Profile");
+		//scrapingStoreService.dropScrapingTable("Gatech_CEE_Faculty_Profile");
 		scrapingScheduler.batchScraping(1, "Gatech_CEE_Faculty_Profile", "Gatech_CEE_FacultyProfile_Web_Pages", scraper, scrapingResult);
 	}
 }
