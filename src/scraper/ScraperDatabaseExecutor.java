@@ -15,11 +15,11 @@ public class ScraperDatabaseExecutor {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			String url = String.format("jdbc:mysql://localhost:3306/%s", ScraperDatabaseConfig.DATABASE_NAME);
+			String url = String.format("jdbc:mysql://localhost:3306/%s?useUnicode=true&characterEncoding=utf-8", ScraperDatabaseConfig.DATABASE_NAME);
 			conn = DriverManager.getConnection(url, ScraperDatabaseConfig.DATABASE_USER, ScraperDatabaseConfig.DATABASE_PASSWORD);
 			System.out.println("conn built");
 			
-			String crawler_url = String.format("jdbc:mysql://localhost:3306/%s", ScraperDatabaseConfig.CRAWLER_DATABASE_NAME);
+			String crawler_url = String.format("jdbc:mysql://localhost:3306/%s?useUnicode=true&characterEncoding=utf-8", ScraperDatabaseConfig.CRAWLER_DATABASE_NAME);
 			crawler_conn = DriverManager.getConnection(crawler_url, ScraperDatabaseConfig.DATABASE_USER, ScraperDatabaseConfig.DATABASE_PASSWORD);	
 			System.out.println("crawler_conn built");
 		} catch (SQLException | ClassNotFoundException e) {

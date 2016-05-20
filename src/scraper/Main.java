@@ -9,9 +9,9 @@ public class Main {
 	public static ScrapingScheduler scrapingScheduler = new ScrapingSchedulerImpl(scrapingStoreService, scrapingService);
 	
 	public static void main(String[] args) throws Exception {
-		Scraper scraper = new ProfessorProfileScraper();
-		ScrapingResult scrapingResult = new ProfessorProfileResult();
-		//scrapingStoreService.dropScrapingTable("Gatech_CEE_Faculty_Profile");
-		scrapingScheduler.batchScraping(1, "Gatech_CEE_Faculty_Profile", "Gatech_CEE_FacultyProfile_Web_Pages", scraper, scrapingResult);
+		Scraper scraper = new GterScraper();
+		ScrapingResult scrapingResult = new GterResult();
+		scrapingStoreService.dropScrapingTable("Gter_Application_Result");
+		scrapingScheduler.batchScraping(1, 2, "Gter_Application_Result", "Gter_new_Web_Pages", scraper, scrapingResult);
 	}
 }
