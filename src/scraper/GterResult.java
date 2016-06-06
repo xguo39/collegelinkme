@@ -1,5 +1,6 @@
 package scraper;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class GterResult extends BaseApplicationResult {
@@ -7,6 +8,11 @@ public class GterResult extends BaseApplicationResult {
     
     // Add all fields here
     public GterResult() {}
+    
+    public GterResult(GterResult gterResult) {
+    	_fieldValues = new HashMap(gterResult.getFieldMap());
+    	_mySQLStoreSchema = new HashMap(gterResult.getMySQLStoreSchema());
+    }
     
     public void generateFiledMap(Map<String, String> fieldMap) {
     	fieldMap.put(URL_KEY, null);

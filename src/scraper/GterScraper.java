@@ -13,7 +13,7 @@ public class GterScraper implements Scraper {
 		_extractors.put("Application_Degree", 
 				"//div[@class='typeoption']//th[contains(.,'学位')]/following-sibling::td/text()");
 		_extractors.put("Applied_Major", 
-				"//div[@class='typeoption']//th[contains(.,'专业')]/following-sibling::td/a/text()");
+				"//div[@class='typeoption']//table[contains(., 'offer')]//th[contains(.,'专业')]/following-sibling::td//text()");
 		_extractors.put("Application_Result", 
 				"//div[@class='typeoption']//th[contains(.,'申请结果')]/following-sibling::td/text()");
 		_extractors.put("Program_Start_Year", 

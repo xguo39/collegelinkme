@@ -34,7 +34,8 @@ public class ScrapingServiceImpl implements ScrapingService {
 					StringBuilder stringBuilder = new StringBuilder();
 					NodeList nodeList = (NodeList) xpath.compile(mapEntry.getValue()).evaluate(doc, XPathConstants.NODESET);
 					for (int i = 0; i < nodeList.getLength(); ++i) {
-						stringBuilder.append(nodeList.item(i).getNodeValue().trim().replace("`", "'").replace("'", "''"));
+						//Hack: We need to replace white space with %20, so that we can split the results in single web page according to white space
+						stringBuilder.append(nodeList.item(i).getNodeValue().trim().replace("`", "'").replace("'", " ").replace(" ", "%20"));
 						stringBuilder.append(" ");
 					}
 					scrapingResult.setFieldByName(fieldName, stringBuilder.toString());

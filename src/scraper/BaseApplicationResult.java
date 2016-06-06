@@ -50,7 +50,7 @@ abstract class BaseApplicationResult implements ScrapingResult {
     	_mySQLStoreSchema.put("Notes", "longtext");
     	generateFiledMap(_fieldValues);
     }
-    
+        
     public Optional<String> getUrl() {
     	if (_fieldValues.get(URL_KEY) == null) {
     		return Optional.empty();
@@ -85,6 +85,10 @@ abstract class BaseApplicationResult implements ScrapingResult {
     
 	public Map<String, String> getMySQLStoreSchema() {
 		return _mySQLStoreSchema;
+	}
+	
+	public Map<String, String> getFieldMap() {
+		return _fieldValues;
 	}
 	
 	abstract void generateFiledMap(Map<String, String> fieldMap);

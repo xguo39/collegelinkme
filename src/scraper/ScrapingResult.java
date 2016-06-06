@@ -15,4 +15,6 @@ public interface ScrapingResult {
 	boolean hasField(String fieldName);
 	
     Map<String, String> getMySQLStoreSchema();
+    
+    Map<String, String> getFieldMap() ;
 }

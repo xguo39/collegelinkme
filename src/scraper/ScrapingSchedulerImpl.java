@@ -1,5 +1,8 @@
 package scraper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.DomSerializer;
 import org.htmlcleaner.HtmlCleaner;
@@ -9,10 +12,12 @@ import org.w3c.dom.Document;
 public class ScrapingSchedulerImpl implements ScrapingScheduler {
 	private ScrapingStoreService _scrapingStoreService;
 	private ScrapingService _scrapingService;
+	private ScrapingResultSpliter _ScrapingResultSpliter;
 	
-	public ScrapingSchedulerImpl(ScrapingStoreService scrapingStoreService, ScrapingService scrapingService) {
+	public ScrapingSchedulerImpl(ScrapingStoreService scrapingStoreService, ScrapingService scrapingService, ScrapingResultSpliter scrapingResultSpliter) {
 		_scrapingStoreService = scrapingStoreService;
 		_scrapingService = scrapingService;
+		_ScrapingResultSpliter = scrapingResultSpliter;
 	}
 
 	public void batchScraping(int startIndex, String tableName, String htmlTableName, Scraper scraper, ScrapingResult scrapingResult) {
@@ -25,11 +30,15 @@ public class ScrapingSchedulerImpl implements ScrapingScheduler {
 		try {
 			_scrapingStoreService.createScrapingTable(tableName, scrapingResultDummy);
 			while(currentIndex <= toIndex && _scrapingStoreService.getHTML(htmlTableName, currentIndex).isPresent()) {
+				System.out.println("Scraping index: " + currentIndex);
 			    TagNode tagNode = new HtmlCleaner().clean(_scrapingStoreService.getHTML(htmlTableName, currentIndex).get());
 				Document doc = new DomSerializer(new CleanerProperties()).createDOM(tagNode);
 				String url = _scrapingStoreService.getURL(htmlTableName, currentIndex).orElse("Empty");
 				ScrapingResult scrapingResult = _scrapingService.singleScrape(scrapingResultDummy, scraper, doc, url);
-				_scrapingStoreService.storeScrapingResult(tableName, scrapingResult);
+				List<ScrapingResult> scrapingResults = _ScrapingResultSpliter.split(scrapingResult);
+				for (ScrapingResult scrapingElement : scrapingResults) {
+					_scrapingStoreService.storeScrapingResult(tableName, scrapingElement);
+				}
 				currentIndex++;
 			}
 		} catch (Exception e) {

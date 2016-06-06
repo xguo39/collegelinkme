@@ -1,5 +1,7 @@
 package scraper;
 
+import java.util.List;
+
 import org.w3c.dom.Document;
 
 public interface ScrapingService {

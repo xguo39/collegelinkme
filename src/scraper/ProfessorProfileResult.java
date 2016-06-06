@@ -53,4 +53,8 @@ public class ProfessorProfileResult implements ScrapingResult {
 	public Map<String, String> getMySQLStoreSchema() {
 		return _mySQLStoreSchema;
 	}
+	
+	public Map<String, String> getFieldMap() {
+		return _fieldValues;
+	}
 }
