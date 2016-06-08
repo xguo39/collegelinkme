@@ -24,11 +24,19 @@ public class GterResult extends BaseApplicationResult {
     	fieldMap.put("Program_Start_Semester", null);
     	fieldMap.put("Offer_Notification_Time", null);
     	fieldMap.put("TOEFL_Overall", null);
+    	fieldMap.put("TOEFL_Reading", null);
+    	fieldMap.put("TOEFL_Listenning", null);
+    	fieldMap.put("TOEFL_Oral", null);
+    	fieldMap.put("TOEFL_Writing", null);
     	fieldMap.put("GRE_Overall", null);
+    	fieldMap.put("GRE_Analytical_Writing", null);
+    	fieldMap.put("GRE_Verbal", null);
+    	fieldMap.put("GRE_Math", null);
     	fieldMap.put("Undergraduate_School", null);
     	fieldMap.put("Undergraduate_Major", null);
     	fieldMap.put("Undergraduate_GPA", null);
     	fieldMap.put("Notes", null);
     	fieldMap.put("WebSite_Name", null);
     }
+
 }

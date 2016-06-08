@@ -72,7 +72,7 @@ abstract class BaseApplicationResult implements ScrapingResult {
 	}
 
 	public Optional<String> getFieldByName(String fieldName) {
-		if (!_fieldValues.containsKey(fieldName)) {
+		if (!_fieldValues.containsKey(fieldName) || _fieldValues.get(fieldName) == null || _fieldValues.get(fieldName).length() == 0) {
 			return Optional.empty();
 		} else {
 			return Optional.of(_fieldValues.get(fieldName));

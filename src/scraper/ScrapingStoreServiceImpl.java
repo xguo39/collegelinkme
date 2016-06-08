@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import com.sun.accessibility.internal.resources.accessibility;
+
 public class ScrapingStoreServiceImpl implements ScrapingStoreService {
 	private ScraperDatabaseExecutor _scraperDatabaseExecutor;
 	
@@ -29,6 +31,9 @@ public class ScrapingStoreServiceImpl implements ScrapingStoreService {
 	public void storeScrapingResult(String tableName, ScrapingResult scrapingResult) throws SQLException {
 		StringBuilder columnStringBuilder = new StringBuilder("`URL`");
 		StringBuilder valuesStringBuilder = new StringBuilder(String.format("'%s'", scrapingResult.getUrl().orElse("Empty")));
+		if (scrapingResult.getUrl().get().equals("http://bbs.gter.net/forum.php?mod=viewthread&tid=1955750&extra=page=1&filter=typeid&typeid=158&typeid=158")) {
+			int a = 1;
+		}
 		
 		scrapingResult.getMySQLStoreSchema().entrySet().stream().forEach(mapEntry -> {
 			String fieldName = mapEntry.getKey();

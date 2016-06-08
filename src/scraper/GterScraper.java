@@ -9,21 +9,21 @@ public class GterScraper implements Scraper {
 	// Add all extractor here
 	public GterScraper(){
 		_extractors.put("Applied_school", 
-				"//div[@class='typeoption']//th[contains(.,'申请学校')]/following-sibling::td/a/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'申请学校')]/following-sibling::td//text()");
 		_extractors.put("Application_Degree", 
-				"//div[@class='typeoption']//th[contains(.,'学位')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'学位')]/following-sibling::td//text()");
 		_extractors.put("Applied_Major", 
-				"//div[@class='typeoption']//table[contains(., 'offer')]//th[contains(.,'专业')]/following-sibling::td//text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'专业')]/following-sibling::td//text()");
 		_extractors.put("Application_Result", 
-				"//div[@class='typeoption']//th[contains(.,'申请结果')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'申请结果')]/following-sibling::td//text()");
 		_extractors.put("Program_Start_Year", 
-				"//div[@class='typeoption']//th[contains(.,'入学年份')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'入学年份')]/following-sibling::td//text()");
 		_extractors.put("Program_Start_Semester", 
-				"//div[@class='typeoption']//th[contains(.,'入学学期')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'入学学期')]/following-sibling::td//text()");
 		_extractors.put("Offer_Notification_Time", 
-				"//div[@class='typeoption']//th[contains(.,'通知时间')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//table[contains(@summary, 'offer')]//th[contains(.,'通知时间')]/following-sibling::td//text()");
 		_extractors.put("TOEFL_Overall", 
-				"//div[@class='typeoption']//th[contains(.,'TOEFL')]/following-sibling::td/text()");
+				"//div[@class='typeoption']//th[contains(.,'TOEFL')]/following-sibling::td/text()");	
 		_extractors.put("GRE_Overall", 
 				"//div[@class='typeoption']//th[contains(.,'GRE')]/following-sibling::td/text()");
 		_extractors.put("Undergraduate_School", 
